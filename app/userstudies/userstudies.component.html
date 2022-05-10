@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="data-table-wrapper shad">
+            <div class="row" style="width:100%">                                                 
+                            <h2 class="pd-l-2 registration">Search</h2>                     
+                    <div class="col-lg-3 col-md-6">
+                            <input type="text" placeholder="Type to Search" name="search" [(ngModel)]="studySearch" autocomplete="off">                                                                                                      
+                    </div>                    
+                    </div>  
+                    <button type="submit" (click)="CreateStudy()" style="float: right" class="btn btn-blue mb-2">Create New Study</button>
+          <table id="example" class="display nowrap dataTable no-footer" style="width: 100%;">
+              <thead>
+                  <tr>
+                      <th>SN.</th>
+                      <th>StudyName</th>
+                      <th (click)="sort('report.videoName')">Uploaded UltraSoundVideo
+                            <i class="fa fa-fw fa-sort"></i><span *ngIf="key =='report.videoName'" [ngClass]="{'glyphicon-chevron-up':!reverse,'glyphicon-chevron-down':reverse}"></span>
+                        </th>
+                      <th (click)="sort('report.finalVideo')">Main Process Video
+                            <i class="fa fa-fw fa-sort"></i><span  *ngIf="key =='report.finalVideo'" [ngClass]="{'glyphicon-chevron-up':!reverse,'glyphicon-chevron-down':reverse}"></span>
+                      </th>
+                      <!-- <th (click)="sort('report.uploadedBy')">Uploaded By
+                            <i class="fa fa-fw fa-sort"></i><span *ngIf="key =='report.uploadedBy'" [ngClass]="{'glyphicon-chevron-up':!reverse,'glyphicon-chevron-down':reverse}"></span>
+                      </th> -->
+                      <th>Created Date(UTC)</th>
+                  </tr>
+              </thead>
+              <tbody id="tbody">
+                  <tr *ngFor="let report of userStudies| orderBy:{ key :reverse, property: column, direction: direction} | filter:studySearch | paginate: { itemsPerPage: 5, currentPage: p }; let i=index ">
+                      <td >{{i+1}}.</td>
+                      <td>{{report.studyName}}</td>
+                      <td (click)="downloadUploadVideos(report.videoName)"><a href="javascript:void(0);">{{report.videoName}}</a></td>                  
+                      <td (click)="downloadMainProcess(report.finalVideo)"><a href="javascript:void(0);">{{report.finalVideo}}</a></td>
+                      <!-- <td>{{report.uploadedBy}}</td>  -->
+                      <td>{{report.createdDate}}</td>                      
+                  </tr>                                                                                                                                                                                                          
+                <tr *ngIf="!userStudies || userStudies.length==0">
+                  <td class="no-data-available" colspan="5">No Matching Record Found...</td>
+                </tr>   
+            </tbody>         
+          </table>
+         :  <pagination-controls (pageChange)="p = $event" style="float:right"></pagination-controls>   
+      </div>
+  </div>
+</div>

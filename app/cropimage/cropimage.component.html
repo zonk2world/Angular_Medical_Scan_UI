@@ -1,0 +1,11 @@
+<div>
+  <h2>Frame - {{ framelist[frameIndex].imageName}}</h2>
+
+  <canvas #canvas id="canvas" (click)="putDot($event)" style="cursor:crosshair;"></canvas>
+</div>
+<br />
+<button (click)="resetDraw()" id="ResetCrop2" style='margin-right:20px' class="button">Reset</button>
+<button (click)="draw()" id="SetCrop" style='margin-right:20px;text-align:left' class="button">Draw</button>
+<button (click)="nextimage()" id="Nextimage" style='margin-right:20px' class="button">{{btnnext}}</button>
+<div id="overlay" [ngStyle]="{'display':Overlaystyle}">
+  <img src="../../assets/images/bigloading.gif" class="loading_circle" alt="loading" /></div>

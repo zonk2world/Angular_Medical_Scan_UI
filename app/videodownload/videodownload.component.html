@@ -1,0 +1,61 @@
+<section>
+
+
+  <div class="main-file-upload " *ngIf="isPreviewbtn">
+    <!--  -->
+    <button (click)='pauseFetchingProcess()' class="btn btn-primary custom-btn">Retry</button>
+  </div>
+
+  <div class="main-file-upload">
+
+    <div class="cst-main-video">
+      <div class="col-sm-12">
+
+        <div class="">
+
+
+          <div id="imageplayer" class="imageplayer cst-main-video">
+          </div>
+          <!-- <vg-player width="20%" *ngIf="videoPlayer">
+            <video [vgMedia]="media" #media id="videoPlayer" preload="none" autoplay="true" controls>
+              <source [src]="videobytes" type="video/mp4">
+            </video>
+          </vg-player> -->
+<br>
+          <p class="description" *ngIf="divDesc">
+            <strong> <i class="fa fa-file-text"></i> {{titltevideoPreview}} 
+              <span id="runningFrameIndex"></span>
+            </strong>
+
+          </p>
+          
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+    <div class="upload-status">
+
+
+      <span class="upload-message" *ngIf="message"
+        [class]="uploadmsg=='success' ? 'upload-message success' : 'upload-message error'">
+
+        {{message}}
+
+      </span>
+      <!-- <progress-bar [progress]="progress" [color]="'#488aff'">
+      </progress-bar> -->
+      <div class="progress" *ngIf="Isprgbar" style="margin-right: 3% ;margin-left: 3%">
+          <div class="progress-bar" role="progressbar" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width.%': progress}">
+            {{progress}}%
+          </div>
+        </div>
+     
+      
+    </div>
+  </div>
+</section>
+

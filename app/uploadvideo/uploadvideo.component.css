@@ -1,0 +1,146 @@
+
+.main-file-upload .custom-btn {
+    margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 125px;
+}
+.reset-btn {
+    background: #696969;
+    margin-left: 20px;
+}
+.reset-btn:hover {
+    background: #696969;
+}
+.upload-col {
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    padding-top: 25px;
+}
+.custom-file-upload {
+    cursor: pointer;
+    position: absolute;
+    left: 14px;
+    width: 98px;
+    background: #485a9d;
+    color: #ffff;
+    line-height: 31px;
+    height: 32px;
+    border-radius: 3px;
+}
+.upload-col button {
+    background: #35b9a2;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px 20px;
+    float: right;
+    cursor: pointer;
+}
+input[type="file"] {
+    outline: none;
+}
+
+.custom-btn2{
+    background: #35b9a2;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    padding: 6px 20px;    
+}
+
+.m-l-5{
+    margin-left: 5px;
+}
+
+.upload-link input {
+    min-width: 310px;
+}
+
+.upload-message {
+    /*color: #f00;*/
+    display: block;
+    margin-bottom: 10px;
+}
+.main-file-upload video  {
+    width: auto;
+    height: 250px;
+}
+.upload-status .success{
+    color: green;
+}
+.upload-status .error
+{
+    color: red;
+}
+.cst-main-video vg-player {
+    font-family: 'videogular';
+    position: relative;
+    display: table;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-text-center{
+    display: table;
+    vertical-align: middle;
+    height: 30vh;
+    width: 100%;
+}
+
+.content-text-center span.upload-message{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@media only screen and (max-width:480px) {
+    .upload-col {
+       width: 92%;
+    }
+    .upload-col input {
+        width: 200px;
+        float: left;
+    }
+    .upload-col button {
+        padding: 5px 13px;
+        font-size: 13px;
+        float: right;
+    }
+    .custom-file-upload {
+        width: 82px;
+    }
+    .upload-col input {
+        width: 60%;
+        float: left;
+        font-size: 13px;
+        line-height: 26px;
+    }
+
+    .upload-link input{
+        min-width:230px;
+        border:1px solid #eee;
+    }
+
+    .upload-col > div{
+        float:left;
+    }
+   
+}
+
+/* media query for iPhone 8 Pluse */
+@media only screen 
+    and (device-width : 414px) 
+    and (device-height : 736px) 
+    and (-webkit-device-pixel-ratio : 3) {
+
+        .upload-link input{
+                
+    width: 283px;
+        }
+     }

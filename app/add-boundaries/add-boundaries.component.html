@@ -1,0 +1,47 @@
+<div id="overlay" [ngStyle]="{'display':Overlaystyle}">
+  <img src="../../assets/images/bigloading.gif" class="loading_circle"
+        alt="loading" /></div>
+<h4 class="frame-heading">Frame - {{ frameIndex}}</h4>
+
+
+
+<div id='main' [ngStyle]="{'width':divwidth,'height':divHeight}">
+    
+  <div id='plot-box' [ngStyle]="{'width':divwidth,'height':divHeight}">
+
+  </div>
+  
+ 
+  <div id='cubic-config' class='config-box method-config' style="display:none !important;">
+    Tension: <div id='cubictension' >0</div>
+    <div id="tension-slider" 
+      class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+    </div>
+  </div>
+  <div class='config-box' style="display:none">
+    <label for="method">Method: </label>
+    <select id='method'>
+      <option value="cubic" selected="selected"></option>
+    </select>
+    <label for="clip" style="margin-left:20px">Clip: </label>
+    <select id='clip'>
+      <option value="periodic" selected="selected">Periodic</option>
+    </select>
+  </div>
+
+  <div id='lanczos-config' class='config-box method-config' style="display:none">
+    Filter Size: <div id='lanczosfiltersize' style="display:inline-block;width:30px">2</div>
+    <div id="lanczos-slider" style="display:inline-block; margin-left:10px;width:150px;font-size:10px">
+    </div>
+  </div>
+
+
+</div>
+<div id="btntest" style="width: 600;background-color: pink" >
+
+</div>
+
+<button (click)="finalsubmit()" id="Nextimage" style='margin-right:20px;margin-top:5px' class="button">{{btnnext}}</button>
+<!-- <button (click)="cancel()" id="Nextimage" style='margin-right:20px;margin-top:5px' class="button">Reset</button> -->
+
+

@@ -1,0 +1,128 @@
+/* smoooth 0.1.6.css */
+.zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5); 
+  }
+  /* #divZoom
+  {
+      width: 600px;
+      height: 480px;
+      
+  
+  }
+  #plot-box{
+      scale: 1.25;
+  } */
+  
+  .navigation {
+      width: 100%;
+       position: fixed;
+      bottom: 0;
+      background: #e8e8e8;
+      padding: 5px 0px;
+      border-top:1px solid #dfdcdc; 
+  }
+   div#plot-box {
+      position:relative;
+      
+      border: 1px solid black;
+      padding: 0;
+      overflow: hidden;
+  
+  } 
+  .button {
+      background: #4a599d;
+      margin: 0 10px;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      border-radius: 3px;
+      padding: 3px 15px;
+      color: #fff;
+    }
+  
+  /* Point handle */
+  .handle2 {
+      position: absolute !important;
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      /* background-color: rgba(0,255,0,.7); */
+      border: 0.5px solid #333;
+      opacity: 0;
+  
+  }
+  
+  .handle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background-color: rgba(0,255,0,.7);
+      border: 0.5px solid #333;
+      opacity: 1;
+      cursor: -webkit-grab;
+  }
+  
+  .ui-draggable-handle
+  {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border-radius: 10px;
+      background-color: rgba(220, 53, 69, 1);
+      border: 0.5px solid #333;
+      opacity: 1;}
+  
+  div.config-box {
+      display:none !important;
+      position:relative;
+      width:580px;
+      border: 1px solid black;
+      padding: 10px;
+  }
+  
+  
+  div#main {
+      position:relative;
+  
+      margin: 0 auto;
+      border-radius: 0.8em;
+      border: 1px solid #DDD;
+      background-color: white;
+      
+  }
+  
+  #overlay {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 100%; /* Full height (cover the whole page) */
+      top: 0; 
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+      z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer;
+  }
+  .loading_circle{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10%;    
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+  }
+  .button {
+      background: #4a599d;
+      margin: 0 10px;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      border-radius: 3px;
+      padding: 3px 15px;
+      color: #fff;
+  }
+  

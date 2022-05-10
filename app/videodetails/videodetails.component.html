@@ -1,0 +1,73 @@
+
+<div id="overlay" [ngStyle]="{'display':Overlaystyle}">
+  <img src="../../assets/images/loading2.gif" class="loading_circle"
+        alt="loading" /></div>
+<section>
+
+
+  <div class="main-file-upload " *ngIf="isPreviewbtn">
+    <!--  -->
+    <button (click)='pauseFetchingProcess()' class="btn btn-primary custom-btn">Retry</button>
+  </div>
+
+  <div class="main-file-upload">
+
+    <div class="cst-main-video">
+      <div class="col-sm-12">
+          <div *ngIf="divDesc">
+              <p class="description">
+                <strong> <i class="fa fa-file-text"></i> Contour Crop</strong>
+  
+              </p>
+          </div>
+        <div class="row">
+
+          <div class="col-md-12 col-lg-6 col-sm-12 widthipad">
+          <div id="imageplayer" class="imageplayer cst-main-video col-sm-12 p-0 w-100">          
+
+          </div>
+          <p class="text-left description"> This video belongs to MEDI-SCAN</p>
+        </div>
+         
+        <div class="col-md-12 col-lg-6 col-sm-12 float-right m-t-41 widthipad">
+          <div id="imageplayer2" class="imageplayer cst-main-video col-sm-12 p-0 w-100">
+              
+
+          </div>
+          <p class="text-left description">  This video belongs to MEDI-SCAN</p>
+          
+        </div>
+          <!-- <div *ngIf="divApprove" class="approve-btn-mt-set">
+           
+            <button (click)='approve()' class="btn btn-primary custom-btn">Approve</button>
+        &nbsp;&nbsp;    <button (click)='cancel()' class="btn btn-primary custom-btn">Cancel</button>
+          </div> -->
+        </div>
+      </div>
+
+
+    </div>
+    <div class="upload-status">
+
+
+      <span class="upload-message" *ngIf="message"
+        [class]="uploadmsg=='success' ? 'upload-message success' : 'upload-message error'">
+
+        {{message}}
+
+      </span>
+      <div class="progress" *ngIf="Isprgbar" style="margin-right: 3% ;margin-left: 3%">
+        <div class="progress-bar" role="progressbar" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"
+          [ngStyle]="{'width.%': progress}">
+          {{progress}}%
+        </div>
+      </div>
+      <!-- <div class="upload-message">
+        <div class="log">
+            {{logdata}}
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</section>

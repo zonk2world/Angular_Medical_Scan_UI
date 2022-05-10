@@ -1,0 +1,44 @@
+<div class="clearfix"></div>
+<div id="overlay" [ngStyle]="{'display':Overlaystyle}">
+  <img src="../../assets/images/bigloading.gif" class="loading_circle" alt="loading" />
+</div>
+<h4 class="frame-heading">Frame - {{framelable}}/{{totalFrames}}</h4>
+
+
+<div class="carousel-col">
+  <div class="canvas-col">
+    <img #ctrlimg style="display: none;" [src]="firstimg" />
+    <div id="wrapper" class="relative wrapper-canwas" [ngStyle]="{'max-width.px':dynamicMaxwidth}">
+      <canvas #canvasEl id="canvasEl"></canvas>
+      <div class="check-absolute" *ngIf="objimagesNamelist">
+        <input type="checkbox" class="custom-check" name="{{on_frame}}"
+          [(ngModel)]="objimagesNamelist[on_frame].IsSelected" (change)="onCheckboxChange($event)" />
+        <label>{{framelable}}</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 my-1 text-center">
+        <button (click)="finalsubmit()" id="SetCrop" class="btn btn-sm btn-theme">submit</button>
+      </div>
+    </div>
+  </div>
+  <div class="demo-border" *ngIf="objimagesNamelist">
+    <drag-scroll class="w-915" #nav  (dsInitialized)="onDragScrollInitialized()"  (indexChanged)="onIndexChanged($event)">
+
+      <div drag-scroll-item  *ngFor="let imgs of objimagesNamelist; let i = index" [id]="i" 
+        [class]="objimagesNamelist[i].IsSelected  ? 'container-w915 active-brdr' : 'container-w915'">
+        <img [class]="WhoIsActive==i ? 'active' : ''" [name]="i" [src]="imgs.fileInBytes" [attr.data-index]="i"
+          (click)="loadimage(imgs.fileInBytes,i)" />
+         
+      </div>
+    </drag-scroll>
+
+
+  </div>
+  <div #divmap [innerHTML]="indexList | sanitizeHtml" class="timeline-wraper"></div>
+  <!-- [class]="WhoIsActive==i ? 'container-w915 active-brdr' : 'container-w915'"<div fxLayout="row" fxLayoutGap="5px" class="relative" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" class="btn btn-lg l-btn" [disabled]="leftNavDisabled" (click)="moveLeft()"><span class="fa fa-angle-left"></span></button>
+    <button mat-raised-button color="primary" class="btn btn-lg r-btn" [disabled]="rightNavDisabled" (click)="moveRight()"><span class="fa fa-angle-right"></span></button>
+  </div> -->
+</div>

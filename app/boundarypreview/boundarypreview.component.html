@@ -1,0 +1,42 @@
+<div id="overlay" [ngStyle]="{'display':Overlaystyle}">
+  <img src="../../assets/images/bigloading.gif" class="loading_circle"
+        alt="loading" /></div>
+<div class="clearfix"></div>
+<div class="carousel-col">
+
+  <h4 class="frame-heading" *ngIf="objimagesNamelist">Frame - {{frame_Title_Range_Index}}/{{ddEnd}}</h4>
+
+
+  <div id="divCanvas" class="canvas-col cst-main-canvas">
+    <img #ctrlimg [src]="firstimg" [width]="width" style="display: none;" />
+    <div id="wrapper">
+      <canvas #canvasEl id="canvasEl" class="canvas-container" style="margin:0 auto !important;"></canvas>
+    </div>
+
+  </div>
+  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+   
+    
+    <button class="button" (click)="play()" id="btnPlay">Play</button>
+    <button class="button" (click)="parentDrawbaundries()" id="btnPlay">Cancel</button>
+    <button class="button" (click)="addFrameBoundary()" id="btnAdd">Add</button>
+    <button class="button" (click)="deleteFrameBoundary(frame_Title_Range_Index)" id="btnDeleted">Delete</button>
+    <button class="button" (click)="finalsubmit()" id="SetCrop">Proceed</button>
+
+    <br><br>
+  </div>
+  
+  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+ 
+    1<input type="range" name="points" min="1" [max]="ddEnd" style="width: 40%" [(ngModel)]="frameImageIndex"
+      (change)="rangechange(frameImageIndex)"><span>{{ddEnd}}</span>
+      
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+      <button *ngFor="let frame of frameList" class="button"  (click)="gotoFrame(frame.getindeximages)" [value]="frame.getindeximages" id="frame.getindeximages">{{frame.getindeximages}}</button>
+    
+    
+  </div>
+
+</div>

@@ -1,0 +1,71 @@
+<div id="overlay" [ngStyle]="{'display':Overlaystyle}">
+  <img src="../../assets/images/bigloading.gif" class="loading_circle"
+        alt="loading" /></div>
+<section>
+
+  <div class="upload-col row" *ngIf="IsUploadDivactive">
+
+    <div class="col-sm-12">
+      <label for="file-upload" class="custom-file-upload" type="file" accept="all"
+        (change)="isValidatefromEvent($event)">
+        Choose
+      </label>
+      <input id="file-upload" #file type="file" accept="all" (change)="isValidatefromEvent($event)" />
+      <button (click)="previewvideo(file.files,'0')">
+        Upload </button>
+    </div>
+    <div class="col-sm-12">
+      <p class="text-center"> Or </p>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-inline justify-content-between upload-link">
+        <input placeholder="Please paste video file link to upload" type="text" class="form-control col-sm-3">
+        <button type="submit" class="btn btn-primary custom-btn2 m-l-5 ">Upload</button>
+      </div>
+    </div>
+    <input type="hidden" value="hdnvideos" #hdnvideo>
+  </div>
+  <div class="upload-status">
+
+    <span *ngIf="progress > 0 && progress < 100">
+      {{progress}} %
+    </span>
+
+  </div>
+  <div class="main-file-upload">
+    <div class="cst-main-video">
+      <div class="">
+        <div id="imageplayer" *ngIf="Iscustomplayer" class="imageplayer cst-main-video">
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- <select>
+          <option *ngFor="let summary of summaries" value={{summary}}>
+            {{summary}}
+          </option>
+        </select> -->
+        <div class="col-sm-12" *ngIf="submitcntrl">
+          <button type="submit" class="btn btn-primary custom-btn" (click)="videoSubmission(hdnvideos,'1')"> Submit
+          </button>
+          <button type="reset" class="btn btn-primary custom-btn reset-btn" (click)="reset()"> Reset </button>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="upload-status content-font-size content-text-center">
+
+    <span class="upload-message" *ngIf="message"
+      [class]="classuploadmsg=='success' ? 'upload-message success' : 'upload-message error'">
+      {{message}}
+    </span>
+
+  </div>
+
+
+</section>
