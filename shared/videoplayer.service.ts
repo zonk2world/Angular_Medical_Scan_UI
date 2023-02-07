@@ -1,20 +1,17 @@
-import { Injectable } from '@angular/core';
-import * as $ from 'jquery';
+import { Injectable } from "@angular/core";
+import * as $ from "jquery";
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class VideoplayerService {
+  constructor() {}
 
-  constructor() { }
-
-  processVideo(imgarray,IsframeShow) {
-
-
+  processVideo(imgarray, IsframeShow) {
     $.imgplay = function (element, options) {
       var defaults = {
-        name: 'imgplay',
+        name: "imgplay",
         rate: 5,
-        controls: true
+        controls: true,
       };
 
       var plugin = this;
@@ -23,7 +20,7 @@ export class VideoplayerService {
       var $canvas = null;
       var screen = null;
       var playing = false;
-      var direction = 'forward';
+      var direction = "forward";
       var page = 1;
       var pageSize = 5;
       var total = 0;
@@ -39,27 +36,25 @@ export class VideoplayerService {
         plugin.settings = $.extend({}, defaults, options);
 
         // max rate is 100 fps and min rate is 0.001 fps
-        plugin.settings.rate = (plugin.settings.rate < 0.001) ? 0.001 : plugin.settings.rate;
-        plugin.settings.rate = (plugin.settings.rate > 100) ? 100 : plugin.settings.rate;
+        plugin.settings.rate =
+          plugin.settings.rate < 0.001 ? 0.001 : plugin.settings.rate;
+        plugin.settings.rate =
+          plugin.settings.rate > 100 ? 100 : plugin.settings.rate;
 
-        $el.addClass('imgplay');
+        $el.addClass("imgplay");
         $canvas = $('<canvas class="imgplay-canvas">');
-        screen = $canvas.get(0).getContext('2d');
+        screen = $canvas.get(0).getContext("2d");
         $el.append($canvas);
         initControls();
 
-
         $.each(imgarray, function (key, value) {
-          var img = new Image(); //$(document.createElement('img')); //$('<img id="dynamic">'); //Equivalent: 
+          var img = new Image(); //$(document.createElement('img')); //$('<img id="dynamic">'); //Equivalent:
 
-          img.src = value.fileInBytes; //.attr('src', "data:image/jpeg;base64,"+value.fileInBytes);  
-
+          img.src = value.fileInBytes; //.attr('src', "data:image/jpeg;base64,"+value.fileInBytes);
 
           plugin.frames.push(img);
           total++;
         });
-
-
 
         $(window).resize(resize);
         resize();
@@ -67,11 +62,10 @@ export class VideoplayerService {
 
       plugin.play = function () {
         playing = true;
-        direction = 'forward';
+        direction = "forward";
 
         drawFrame();
       };
-
 
       plugin.pause = function () {
         playing = false;
@@ -88,7 +82,7 @@ export class VideoplayerService {
       plugin.rewind = function (frames) {
         frames = parseInt(frames);
         if (frames > 0 && index >= frames) {
-          direction = 'backward';
+          direction = "backward";
           index -= frames;
           drawFrame();
         }
@@ -97,7 +91,7 @@ export class VideoplayerService {
       plugin.forward = function (frames) {
         frames = parseInt(frames);
         if (frames > 0 && total >= index + frames) {
-          direction = 'forward';
+          direction = "forward";
           index += frames;
           drawFrame();
         }
@@ -106,7 +100,7 @@ export class VideoplayerService {
       plugin.fastRewind = function (rate) {
         rate = parseInt(rate);
         if (rate > 0) {
-          direction = 'backward';
+          direction = "backward";
           plugin.settings.rate = rate;
         }
         drawFrame();
@@ -115,28 +109,26 @@ export class VideoplayerService {
       plugin.fastForward = function (rate) {
         rate = parseInt(rate);
         if (rate > 0) {
-          direction = 'forward';
+          direction = "forward";
           plugin.settings.rate = rate;
         }
         drawFrame();
       };
 
-      plugin.previous = function () {
-      };
+      plugin.previous = function () {};
 
-      plugin.next = function () {
-      };
+      plugin.next = function () {};
 
       plugin.previousFrame = function () {
         playing = false;
-        direction = 'backward';
+        direction = "backward";
         index--;
         drawFrame();
       };
 
       plugin.nextFrame = function () {
         playing = false;
-        direction = 'forward';
+        direction = "forward";
         index++;
         drawFrame();
       };
@@ -182,28 +174,48 @@ export class VideoplayerService {
       };
 
       var initControls = function () {
-        if ($el.find('.imgplay-controls').length == 0) {
+        if ($el.find(".imgplay-controls").length == 0) {
           var controls = $('<div class="imgplay-controls"></div>');
           var progress = $('<div class="imgplay-progress">');
           var buttons = $('<div class="imgplay-buttons">');
           var loadBar = $('<div class="imgplay-load-bar">');
           var playBar = $('<div class="imgplay-play-bar">');
-          var play = $('<div #divplay id="divplay" title="Play" class="imgplay-button imgplay-play"><i class="material-icons">play_arrow</i></div>');
-          var pause = $('<div class="imgplay-button imgplay-pause" title="Pause"><i class="material-icons">pause</i></div>');
-          var stop = $('<div class="imgplay-button imgplay-stop" title="Stop"><i class="material-icons">stop</i></div>');
+          var play = $(
+            '<div #divplay id="divplay" title="Play" class="imgplay-button imgplay-play"><i class="material-icons">play_arrow</i></div>'
+          );
+          var pause = $(
+            '<div class="imgplay-button imgplay-pause" title="Pause"><i class="material-icons">pause</i></div>'
+          );
+          var stop = $(
+            '<div class="imgplay-button imgplay-stop" title="Stop"><i class="material-icons">stop</i></div>'
+          );
           //var rewind = $('<div class="imgplay-button imgplay-rewind"><i class="material-icons">fast_rewind</i></div>');
           //var forward = $('<div class="imgplay-button imgplay-forward"><i class="material-icons">fast_forward</i></div>');
-          var previousFrame = $('<div class="imgplay-button imgplay-previous-frame" title="Previous Frame"><i class="material-icons">skip_previous</i></div>');
-          var nextFrame = $('<div class="imgplay-button imgplay-next-frame" title="Next Frame"><i class="material-icons" >skip_next</i></div>');
+          var previousFrame = $(
+            '<div class="imgplay-button imgplay-previous-frame" title="Previous Frame"><i class="material-icons">skip_previous</i></div>'
+          );
+          var nextFrame = $(
+            '<div class="imgplay-button imgplay-next-frame" title="Next Frame"><i class="material-icons" >skip_next</i></div>'
+          );
           // var fullscreen = $('<div class="imgplay-button imgplay-fullscreen"><i class="material-icons">fullscreen</i></div>');
 
-          play.on('click', function () { plugin.play(); })
-          pause.on('click', function () { plugin.pause(); })
-          stop.on('click', function () { plugin.stop(); })
+          play.on("click", function () {
+            plugin.play();
+          });
+          pause.on("click", function () {
+            plugin.pause();
+          });
+          stop.on("click", function () {
+            plugin.stop();
+          });
           //rewind.on('click', function() { plugin.rewind(); })
           //forward.on('click', function() { plugin.forward(); })
-          previousFrame.on('click', function () { plugin.previousFrame(); })
-          nextFrame.on('click', function () { plugin.nextFrame(); })
+          previousFrame.on("click", function () {
+            plugin.previousFrame();
+          });
+          nextFrame.on("click", function () {
+            plugin.nextFrame();
+          });
           //fullscreen.on('click', function () { plugin.fullscreen(); })
 
           loadBar.append(playBar);
@@ -220,11 +232,11 @@ export class VideoplayerService {
           var $img = $(img);
 
           if (img) {
-            if ($img.prop('naturalHeight') > 0) {
+            if ($img.prop("naturalHeight") > 0) {
               var cw = $canvas.width();
-              var ch =$canvas.height();// window.innerWidth < 767 ? $canvas.height() : 350;
+              var ch = $canvas.height(); // window.innerWidth < 767 ? $canvas.height() : 350;
               var iw = img.width;
-              var ih = img.height
+              var ih = img.height;
               var vw = 0;
               var vh = 0;
 
@@ -235,10 +247,10 @@ export class VideoplayerService {
                 vw = cw;
                 vh = ih * (cw / iw);
               }
-          
-             // screen.drawImage(img,600, 480, 451, 261);
-             //console.log((cw - vw) / 2, (ch - vh) / 2, vw, vh);
-            screen.drawImage(img, 0,0, cw, ch);
+
+              // screen.drawImage(img,600, 480, 451, 261);
+              //console.log((cw - vw) / 2, (ch - vh) / 2, vw, vh);
+              screen.drawImage(img, 0, 0, cw, ch);
             }
           } else if (buffer.length) {
             plugin.pause();
@@ -252,7 +264,7 @@ export class VideoplayerService {
           }
 
           if (playing) {
-            if (direction == 'forward') {
+            if (direction == "forward") {
               index++;
               if (index > plugin.frames.length - pageSize / 2) {
                 loadMore();
@@ -261,7 +273,10 @@ export class VideoplayerService {
               index--;
             }
 
-            playTimer = setTimeout(drawFrame, Math.ceil(1000 / plugin.settings.rate));
+            playTimer = setTimeout(
+              drawFrame,
+              Math.ceil(1000 / plugin.settings.rate)
+            );
           }
 
           drawProgress();
@@ -270,7 +285,7 @@ export class VideoplayerService {
 
       var loadMore = function () {
         if (buffer.length) {
-          for (var i = 0; (i < pageSize && i < buffer.length); i++) {
+          for (var i = 0; i < pageSize && i < buffer.length; i++) {
             loadFrame(i);
           }
         }
@@ -281,32 +296,37 @@ export class VideoplayerService {
           var img = buffer[i];
           var $img = $(img);
 
-          if ($img.data('src')) {
-            $img.on('load', function () {
-              plugin.frames.push(img);
-              buffer.splice(buffer.indexOf(img), 1);
-              drawProgress();
-              if (i == (pageSize - 1) && direction == 'forward' && playing == false) {
-                plugin.play();
-              }
-            }).prop('src', $img.data('src'));
+          if ($img.data("src")) {
+            $img
+              .on("load", function () {
+                plugin.frames.push(img);
+                buffer.splice(buffer.indexOf(img), 1);
+                drawProgress();
+                if (
+                  i == pageSize - 1 &&
+                  direction == "forward" &&
+                  playing == false
+                ) {
+                  plugin.play();
+                }
+              })
+              .prop("src", $img.data("src"));
           }
         }
       };
       var drawProgress = function () {
-        var loadProgress = ((plugin.frames.length / total) * 100);
-        var playProgress = ((index / plugin.frames.length) * 100);
-//console.log(index);
+        var loadProgress = (plugin.frames.length / total) * 100;
+        var playProgress = (index / plugin.frames.length) * 100;
+        //console.log(index);
         loadProgress = loadProgress > 100 ? 100 : loadProgress;
         playProgress = playProgress > 100 ? 100 : playProgress;
-       
-     
-        $el.find('.imgplay-load-bar').css('width', loadProgress + '%');
-        $el.find('.imgplay-play-bar').css('width', playProgress + '%');
-        console.log(plugin.frames.length,index,total)
-        if(IsframeShow=-true && index<=total) 
 
-        document.getElementById("runningFrameIndex").innerText=(index).toString();
+        $el.find(".imgplay-load-bar").css("width", loadProgress + "%");
+        $el.find(".imgplay-play-bar").css("width", playProgress + "%");
+        console.log(plugin.frames.length, index, total);
+        if ((IsframeShow = -true && index <= total))
+          document.getElementById("runningFrameIndex").innerText =
+            index.toString();
       };
 
       var resize = function () {
@@ -318,14 +338,13 @@ export class VideoplayerService {
 
     $.fn.imgplay = function (options) {
       return this.each(function () {
-        if ($(this).data('imgplay') == undefined) {
+        if ($(this).data("imgplay") == undefined) {
           var plugin = new $.imgplay(this, options);
-          $(this).data('imgplay', plugin);
+          $(this).data("imgplay", plugin);
         }
       });
     };
-    $('#imageplayer').imgplay({ rate: 14 }); // start imgplay
-    $('#imageplayer2').imgplay({ rate: 14 });
-
+    $("#imageplayer").imgplay({ rate: 14 }); // start imgplay
+    $("#imageplayer2").imgplay({ rate: 14 });
   }
 }
